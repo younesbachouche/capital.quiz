@@ -1,234 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Country Capitals Quiz</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f9fa;
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Capitals Quiz</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-    h1, h2, h3 {
-      margin: 0;
-      font-weight: 600;
-    }
+        h1, h2, h3 {
+            margin: 0;
+            font-weight: 600;
+        }
 
-    /* Quiz Container */
-    #quiz-container {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-    }
+        /* Quiz Container */
+        #quiz-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
 
-    /* Country Flag */
-    #flag {
-      width: 100px;
-      height: auto;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      margin: 10px auto;
-    }
+        /* Country Flag */
+        #flag {
+            width: 100px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin: 10px auto;
+        }
 
-    /* Question */
-    #question {
-      font-size: 20px;
-      margin: 15px 0;
-      color: #2c3e50;
-    }
+        /* Question */
+        #question {
+            font-size: 20px;
+            margin: 15px 0;
+            color: #2c3e50;
+        }
 
-    /* Options */
-    .option {
-      background: #3498db;
-      color: white;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
+        /* Options */
+        .option {
+            background: #3498db;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
 
-    .option:hover {
-      background: #2980b9;
-      transform: translateY(-2px);
-    }
+        .option:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
 
-    .option.correct {
-      background: #2ecc71;
-    }
+        .option.correct {
+            background: #2ecc71;
+        }
 
-    .option.incorrect {
-      background: #e74c3c;
-    }
+        .option.incorrect {
+            background: #e74c3c;
+        }
 
-    /* Score */
-    #score {
-      font-size: 18px;
-      margin: 15px 0;
-      color: #2c3e50;
-    }
+        /* Score */
+        #score {
+            font-size: 18px;
+            margin: 15px 0;
+            color: #2c3e50;
+        }
 
-    /* Next Button */
-    #next-button {
-      background: #2c3e50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.3s;
-    }
+        /* Next Button */
+        #next-button {
+            background: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
 
-    #next-button:hover {
-      background: #1a252f;
-    }
+        #next-button:hover {
+            background: #1a252f;
+        }
 
-    /* Footer */
-    #footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-      color: #777;
-    }
+        /* Footer */
+        #footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
 
-    #footer a {
-      color: #3498db;
-      text-decoration: none;
-    }
+        #footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
 
-    #footer a:hover {
-      text-decoration: underline;
-    }
+        #footer a:hover {
+            text-decoration: underline;
+        }
 
-    /* Mobile-friendly adjustments */
-    @media (max-width: 480px) {
-      #quiz-container {
-        padding: 15px;
-      }
+        /* Mobile-friendly adjustments */
+        @media (max-width: 480px) {
+            #quiz-container {
+                padding: 15px;
+            }
 
-      #question {
-        font-size: 18px;
-      }
+            #question {
+                font-size: 18px;
+            }
 
-      .option {
-        padding: 8px;
-        font-size: 14px;
-      }
+            .option {
+                padding: 8px;
+                font-size: 14px;
+            }
 
-      #next-button {
-        padding: 8px 16px;
-        font-size: 14px;
-      }
-    }
-  </style>
+            #next-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Quiz Container -->
-  <div id="quiz-container">
-    <h1>Country Capitals Quiz</h1>
-    <img id="flag" src="" alt="Country Flag">
-    <div id="question">What is the capital of <span id="country-name"></span>?</div>
-    <div id="options">
-      <div class="option" data-correct="false"></div>
-      <div class="option" data-correct="false"></div>
-      <div class="option" data-correct="false"></div>
+    <!-- Quiz Container -->
+    <div id="quiz-container">
+        <h1>Country Capitals Quiz</h1>
+        <img id="flag" src="" alt="Country Flag">
+        <div id="question">What is the capital of <span id="country-name"></span>?</div>
+        <div id="options">
+            <div class="option" data-correct="false"></div>
+            <div class="option" data-correct="false"></div>
+            <div class="option" data-correct="false"></div>
+        </div>
+        <div id="score">Score: 0</div>
+        <button id="next-button">Next Question</button>
+        <div id="footer">
+            Made with ❤️ by <a href="https://github.com/younesbachouche" target="_blank">Younes Bachouche</a>
+        </div>
     </div>
-    <div id="score">Score: 0</div>
-    <button id="next-button">Next Question</button>
-    <div id="footer">
-      Made with ❤️ by <a href="https://github.com/younesbachouche" target="_blank">Younes Bachouche</a>
-    </div>
-  </div>
 
-  <script>
-    let countries = []; // Store all countries data
-    let currentCountry; // Current country being quizzed
-    let score = 0; // User's score
+    <script>
+        let countries = []; // Store all countries data
+        let currentCountry; // Current country being quizzed
+        let score = 0; // User's score
 
-    // Fetch all countries data from the REST Countries API
-    async function fetchCountries() {
-      try {
-        const response = await fetch('https://restcountries.com/v3.1/all');
-        const data = await response.json();
-        countries = data.filter(country => country.capital && country.capital[0]); // Filter countries with valid capitals
-        loadNextQuestion();
-      } catch (error) {
-        console.error('Error fetching countries:', error);
-      }
-    }
-
-    // Load the next question
-    function loadNextQuestion() {
-      // Select a random country
-      currentCountry = countries[Math.floor(Math.random() * countries.length)];
-
-      // Display the country name and flag
-      document.getElementById('country-name').textContent = currentCountry.name.common;
-      document.getElementById('flag').src = currentCountry.flags.png;
-
-      // Generate options (1 correct and 2 random incorrect)
-      const options = [currentCountry.capital[0]]; // Correct answer
-      while (options.length < 3) {
-        const randomCountry = countries[Math.floor(Math.random() * countries.length)];
-        if (!options.includes(randomCountry.capital[0])) {
-          options.push(randomCountry.capital[0]);
+        // Fetch all countries data from the REST Countries API
+        async function fetchCountries() {
+            try {
+                const response = await fetch('https://restcountries.com/v3.1/all');
+                const data = await response.json();
+                countries = data.filter(country =>
+                    country.capital && country.capital[0] && country.name.common !== "Israel"
+                ); // Filter countries with valid capitals and exclude Israel
+                loadNextQuestion();
+            } catch (error) {
+                console.error('Error fetching countries:', error);
+            }
         }
-      }
 
-      // Shuffle options
-      options.sort(() => Math.random() - 0.5);
+        // Load the next question
+        function loadNextQuestion() {
+            // Select a random country
+            currentCountry = countries[Math.floor(Math.random() * countries.length)];
 
-      // Display options
-      const optionElements = document.querySelectorAll('.option');
-      optionElements.forEach((option, index) => {
-        option.textContent = options[index];
-        option.dataset.correct = options[index] === currentCountry.capital[0];
-        option.classList.remove('correct', 'incorrect'); // Reset styles
-      });
+            // Display the country name and flag
+            document.getElementById('country-name').textContent = currentCountry.name.common;
+            document.getElementById('flag').src = currentCountry.flags.png;
 
-      // Enable options
-      optionElements.forEach(option => {
-        option.onclick = () => checkAnswer(option);
-      });
-    }
+            // Generate options (1 correct and 2 random incorrect)
+            const options = [currentCountry.capital[0]]; // Correct answer
+            while (options.length < 3) {
+                const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+                if (!options.includes(randomCountry.capital[0])) {
+                    options.push(randomCountry.capital[0]);
+                }
+            }
 
-    // Check the selected answer
-    function checkAnswer(selectedOption) {
-      const options = document.querySelectorAll('.option');
-      options.forEach(option => {
-        option.onclick = null; // Disable further clicks
-        if (option.dataset.correct === 'true') {
-          option.classList.add('correct');
-        } else {
-          option.classList.add('incorrect');
+            // Shuffle options
+            options.sort(() => Math.random() - 0.5);
+
+            // Display options
+            const optionElements = document.querySelectorAll('.option');
+            optionElements.forEach((option, index) => {
+                option.textContent = options[index];
+                option.dataset.correct = options[index] === currentCountry.capital[0];
+                option.classList.remove('correct', 'incorrect'); // Reset styles
+            });
+
+            // Enable options
+            optionElements.forEach(option => {
+                option.onclick = () => checkAnswer(option);
+            });
         }
-      });
 
-      if (selectedOption.dataset.correct === 'true') {
-        score++;
-        document.getElementById('score').textContent = `Score: ${score}`;
-      }
-    }
+        // Check the selected answer
+        function checkAnswer(selectedOption) {
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.onclick = null; // Disable further clicks
+                if (option.dataset.correct === 'true') {
+                    option.classList.add('correct');
+                } else {
+                    option.classList.add('incorrect');
+                }
+            });
 
-    // Next button
-    document.getElementById('next-button').addEventListener('click', loadNextQuestion);
+            if (selectedOption.dataset.correct === 'true') {
+                score++;
+                document.getElementById('score').textContent = `Score: ${score}`;
+            }
+        }
 
-    // Fetch countries and start the quiz
-    fetchCountries();
-  </script>
+        // Next button
+        document.getElementById('next-button').addEventListener('click', loadNextQuestion);
+
+        // Fetch countries and start the quiz
+        fetchCountries();
+    </script>
 </body>
 </html>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Capitals Quiz</title>
     <style>
-        /* General Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -23,7 +22,6 @@
             font-weight: 600;
         }
 
-        /* Quiz Container */
         #quiz-container {
             background: white;
             border-radius: 12px;
@@ -34,7 +32,6 @@
             text-align: center;
         }
 
-        /* Country Flag */
         #flag {
             width: 100px;
             height: auto;
@@ -43,14 +40,12 @@
             margin: 10px auto;
         }
 
-        /* Question */
         #question {
             font-size: 20px;
             margin: 15px 0;
             color: #2c3e50;
         }
 
-        /* Options */
         .option {
             background: #3498db;
             color: white;
@@ -74,14 +69,12 @@
             background: #e74c3c;
         }
 
-        /* Score */
         #score {
             font-size: 18px;
             margin: 15px 0;
             color: #2c3e50;
         }
 
-        /* Next Button */
         #next-button {
             background: #2c3e50;
             color: white;
@@ -97,7 +90,6 @@
             background: #1a252f;
         }
 
-        /* Footer */
         #footer {
             text-align: center;
             margin-top: 20px;
@@ -114,7 +106,6 @@
             text-decoration: underline;
         }
 
-        /* Mobile-friendly adjustments */
         @media (max-width: 480px) {
             #quiz-container {
                 padding: 15px;
@@ -137,7 +128,6 @@
     </style>
 </head>
 <body>
-    <!-- Quiz Container -->
     <div id="quiz-container">
         <h1>Country Capitals Quiz</h1>
         <img id="flag" src="" alt="Country Flag">
@@ -155,9 +145,9 @@
     </div>
 
     <script>
-        let countries = []; // Store all countries data
-        let currentCountry; // Current country being quizzed
-        let score = 0; // User's score
+        let countries = []; 
+        let currentCountry; 
+        let score = 0; 
 
         // Fetch all countries data from the REST Countries API
         async function fetchCountries() {
@@ -173,16 +163,12 @@
             }
         }
 
-        // Load the next question
         function loadNextQuestion() {
-            // Select a random country
             currentCountry = countries[Math.floor(Math.random() * countries.length)];
 
-            // Display the country name and flag
             document.getElementById('country-name').textContent = currentCountry.name.common;
             document.getElementById('flag').src = currentCountry.flags.png;
 
-            // Generate options (1 correct and 2 random incorrect)
             const options = [currentCountry.capital[0]]; // Correct answer
             while (options.length < 3) {
                 const randomCountry = countries[Math.floor(Math.random() * countries.length)];
@@ -191,10 +177,8 @@
                 }
             }
 
-            // Shuffle options
             options.sort(() => Math.random() - 0.5);
 
-            // Display options
             const optionElements = document.querySelectorAll('.option');
             optionElements.forEach((option, index) => {
                 option.textContent = options[index];
@@ -202,13 +186,11 @@
                 option.classList.remove('correct', 'incorrect'); // Reset styles
             });
 
-            // Enable options
             optionElements.forEach(option => {
                 option.onclick = () => checkAnswer(option);
             });
         }
 
-        // Check the selected answer
         function checkAnswer(selectedOption) {
             const options = document.querySelectorAll('.option');
             options.forEach(option => {
@@ -226,10 +208,8 @@
             }
         }
 
-        // Next button
         document.getElementById('next-button').addEventListener('click', loadNextQuestion);
 
-        // Fetch countries and start the quiz
         fetchCountries();
     </script>
 </body>
